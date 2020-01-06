@@ -1,5 +1,6 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
+from datetime import date , timedelta 
 
 
 class agent_registration(models.Model):
@@ -19,29 +20,31 @@ class agent_registration(models.Model):
 class inquirey(models.Model):
     _name = 'inquirey.inquirey.demo'
     _description = 'inquirey.inquirey'
-
+    _rec_name = 'source_add'
     source_add = fields.Char(required=True)
     desti_add = fields.Char(required=True)
     KM = fields.Integer()
-    duration = fields.Datetime()
-    vehicle_type = fields.Selection(store='True',selection=[('2wheeler','2 wheeler'),('3wheeler','3 wheeler'),('4wheeler','4 wheeler')])
-    vehicle_capacity = fields.Selection(store='True',selection=[('250kg','250 kg'),('550kg','550 kg'),('1000kg','1000 kg')])
-    vehicle_speed = fields.Selection(store='True',selection=[('70kmph ','70 kmph'),('50kmph','50 kmph '),('60kmph','60 kmph')])
+    duration =fields.Float()
+    vehicle_type = fields.Selection(store='True',selection=[('2','2 wheeler'),('3','3 wheeler'),('4','4 wheeler')])
+    vehicle_capacity = fields.Selection(store='True',selection=[('250','250 kg'),('550','550 kg'),('1000','1000 kg')])
+    vehicle_speed = fields.Selection(store='True',selection=[('70 ','70 kmph'),('50','50 kmph '),('60','60 kmph')])
+    date_start=fields.Date()
+    date_stop=fields.Date()
 
 
     @api.onchange('vehicle_type','vehicle_capacity')
     def _value_pc(self):
-        	if self.vehicle_type == '2wheeler':
-        		self.vehicle_capacity = '250kg'
-        		self.vehicle_speed = '70kmph'
+        	if self.vehicle_type == '2':
+        		self.vehicle_capacity = '250'
+        		self.vehicle_speed = '70'
 
-        	elif self.vehicle_type == '3wheeler':
-        		self.vehicle_capacity = '550kg'
-        		self.vehicle_speed = '50kmph'
+        	elif self.vehicle_type == '3':
+        		self.vehicle_capacity = '550'
+        		self.vehicle_speed = '50'
 
-        	elif self.vehicle_type == '4wheeler':
-        		self.vehicle_capacity = '1000kg'
-        		self.vehicle_speed = '60kmph'
+        	elif self.vehicle_type == '4':
+        		self.vehicle_capacity = '1000'
+        		self.vehicle_speed = '60'
 	
 
     @api.constrains('source_add', 'desti_add')

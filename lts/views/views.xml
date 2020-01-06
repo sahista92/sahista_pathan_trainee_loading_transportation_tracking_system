@@ -1,12 +1,10 @@
 <odoo>
   <data>
-    <!-- explicit list view definition -->
-
-    <record model="ir.ui.view" id="lts.list_agent_regi">
+    <record model="ir.ui.view" id="lts.list_agent_regi"> 
       <field name="name">AR list</field>
       <field name="model">agent_registration.agent_registration</field>
       <field name="arch" type="xml">
-        <tree>
+        <tree editable="top">
           <field name="name"/>
           <field name="email"/>
           <field name="c_number"/>
@@ -52,9 +50,29 @@
           <field name="vehicle_type"/>
           <field name="vehicle_capacity"/>
           <field name="vehicle_speed"/>
+          <field name="date_start"/>
+          <field name="date_stop"/>         
         </tree>
       </field>
     </record>
+
+
+    <record model="ir.ui.view" id="lts.list_inquirey_cal">
+      <field name="name">inquirey</field>
+      <field name="model">inquirey.inquirey.demo</field>
+      <field name="arch" type="xml">
+        <calendar string="Service Request" date_start="date_start" date_stop="date_stop">
+           <field name="vehicle_type"/>
+       </calendar>
+      </field>
+    </record>
+
+
+
+
+
+
+
 
     <record model="ir.ui.view" id="lts.list_order">
       <field name="name">Order</field>
@@ -73,11 +91,21 @@
       </field>
     </record>
 
+  <record model="ir.ui.view" id="lts.list_order_graph">
+      <field name="name">Order</field>
+      <field name="model">order.order</field>
+      <field name="arch" type="xml">
+        <graph>
+          <field name="vehicle_capacity"/>
+          <field name="vehicle_type" type="measure"/>
+        </graph>
+      </field>
+    </record>
 
 
 
 
-    <!-- actions opening views on models -->
+
 
     <record model="ir.actions.act_window" id="lts.action_window_agent_regi">
       <field name="name">Details</field>
@@ -94,31 +122,28 @@
     <record model="ir.actions.act_window" id="lts.action_window_inquirey">
       <field name="name">Inquirey</field>
       <field name="res_model">inquirey.inquirey.demo</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">tree,form,calendar</field>
     </record>
 
 
     <record model="ir.actions.act_window" id="lts.action_window_order">
       <field name="name">order</field>
       <field name="res_model">order.order</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">tree,form,graph</field>
     </record>
 
 
 
 
-    <!-- Top menu item -->
+
 
     <menuitem name="Loading Transportation System" id="lts.menu_root"/>
 
-    <!-- menu categories -->
+   
 
     <menuitem name="Agent-Registration" id="lts.menu_1_agent_regi" parent="lts.menu_root" action="lts.action_window_agent_regi"/>
 
-<!--     <menuitem name="Agent Data" id="lts.menu_1_AR" parent="lts.menu_1_agent_regi"
-              action="lts.action_window_agent_regi"/> -->
 
-    <!-- <menuitem name="Inquirey" id="lts.menu_1_inquirey" parent="lts.menu_root"/> -->
     <menuitem name="Inquirey Data" id="lts.menu_1_inquirey" parent = "lts.menu_root" action="lts.action_window_inquirey"/>
 
     <menuitem name="Order Data" id="lts.menu_1_order" parent = "lts.menu_root" action="lts.action_window_order"/>
