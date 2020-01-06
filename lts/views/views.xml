@@ -1,0 +1,130 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="lts.list_agent_regi">
+      <field name="name">AR list</field>
+      <field name="model">agent_registration.agent_registration</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="email"/>
+          <field name="c_number"/>
+          <field name="gender"/>
+          <field name="address"/>
+          <field name="city"/>
+          <field name="state"/>
+          <field name="password"/>
+        </tree>
+      </field>
+    </record>
+
+
+
+    <record model="ir.ui.view" id="lts.list_transporter_regi">
+      <field name="name">Transporter Registration</field>
+      <field name="model">transporter_registration.transporter_registration</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="email"/>
+          <field name="c_number"/>
+          <field name="gender"/>
+          <field name="address"/>
+          <field name="city"/>
+          <field name="state"/>
+          <field name="password"/>
+        </tree>
+      </field>
+    </record>
+
+
+
+    <record model="ir.ui.view" id="lts.list_inquirey">
+      <field name="name">inquirey</field>
+      <field name="model">inquirey.inquirey.demo</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="source_add"/>
+          <field name="desti_add"/>
+          <field name="KM"/>
+          <field name="duration"/>
+          <field name="vehicle_type"/>
+          <field name="vehicle_capacity"/>
+          <field name="vehicle_speed"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="lts.list_order">
+      <field name="name">Order</field>
+      <field name="model">order.order</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="order_number"/>
+          <field name="source_add"/>
+          <field name="desti_add"/>
+          <field name="KM"/>
+          <field name="duration"/>
+          <field name="vehicle_type"/>
+          <field name="vehicle_capacity"/>
+          <field name="vehicle_speed"/>
+        </tree>
+      </field>
+    </record>
+
+
+
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="lts.action_window_agent_regi">
+      <field name="name">Details</field>
+      <field name="res_model">agent_registration.agent_registration</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="lts.action_window_transporter_regi">
+      <field name="name">Details</field>
+      <field name="res_model">transporter_registration.transporter_registration</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="lts.action_window_inquirey">
+      <field name="name">Inquirey</field>
+      <field name="res_model">inquirey.inquirey.demo</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="lts.action_window_order">
+      <field name="name">order</field>
+      <field name="res_model">order.order</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+
+    <!-- Top menu item -->
+
+    <menuitem name="Loading Transportation System" id="lts.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Agent-Registration" id="lts.menu_1_agent_regi" parent="lts.menu_root" action="lts.action_window_agent_regi"/>
+
+<!--     <menuitem name="Agent Data" id="lts.menu_1_AR" parent="lts.menu_1_agent_regi"
+              action="lts.action_window_agent_regi"/> -->
+
+    <!-- <menuitem name="Inquirey" id="lts.menu_1_inquirey" parent="lts.menu_root"/> -->
+    <menuitem name="Inquirey Data" id="lts.menu_1_inquirey" parent = "lts.menu_root" action="lts.action_window_inquirey"/>
+
+    <menuitem name="Order Data" id="lts.menu_1_order" parent = "lts.menu_root" action="lts.action_window_order"/>
+
+    <menuitem name="Transporter-Registration" id="lts.menu_1_TR" parent = "lts.menu_root" action="lts.action_window_transporter_regi"/>
+
+ 
+  </data>
+</odoo>
