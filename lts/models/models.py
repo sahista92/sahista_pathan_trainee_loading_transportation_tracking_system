@@ -1,6 +1,6 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
-from datetime import date , timedelta 
+from datetime import date 
 
 
 class agent_registration(models.Model):
@@ -13,9 +13,22 @@ class agent_registration(models.Model):
     gender = fields.Selection([('male','Male'),('female','Female'),('other','Other')])
     address = fields.Text(required=True)
     city = fields.Char()
-    state = fields.Char()
     password = fields.Char(required=True)
+    state= fields.Selection([('draft','draft'),('done','done'),('cancel','cancel')], default='draft')
 
+    
+    def button_done(self):
+        self.write({'state': 'done'})
+        return True
+    
+    def button_reset(self):
+        self.write({'state': 'draft'})
+        return True
+    
+    def button_cancel(self):
+        self.write({'state': 'cancel'})
+        return True
+    
 
 class inquirey(models.Model):
     _name = 'inquirey.inquirey.demo'
@@ -60,9 +73,9 @@ class order(models.Model):
 
     order_number = fields.Integer(required=True)
 
-
-class transporter_registration(models.Model):
-    _name = 'transporter_registration.transporter_registration'
+class  transporter_regi(models.Model):
+    _name = 'transporter_regi.transporter_regi'
     _inherit = 'agent_registration.agent_registration'
-    _description = 'transporter_registration.transporter_registration'    
+    _description = 'transporter_regi.transporter_regi'
 
+    

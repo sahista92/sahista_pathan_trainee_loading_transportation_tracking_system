@@ -27,6 +27,9 @@
         'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
+        'views/order.xml',
+        'views/inquirey.xml',
+        'views/transporter.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

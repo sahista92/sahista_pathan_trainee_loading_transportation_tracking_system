@@ -1,0 +1,39 @@
+<odoo>
+	<data>
+				<record model="ir.ui.view" id="lts_list_inquirey">
+			      <field name="name">inquirey</field>
+			      <field name="model">inquirey.inquirey.demo</field>
+			      <field name="arch" type="xml">
+			        <tree>
+			          <field name="source_add"/>
+			          <field name="desti_add"/>
+			          <field name="KM"/>
+			          <field name="duration"/>
+			          <field name="vehicle_type"/>
+			          <field name="vehicle_capacity"/>
+			          <field name="vehicle_speed"/>
+			          <field name="date_start"/>
+			          <field name="date_stop"/>         
+			        </tree>
+			      </field>
+			    </record>
+
+			        <record model="ir.ui.view" id="lts_list_inquirey_cal">
+				      <field name="name">inquirey</field>
+				      <field name="model">inquirey.inquirey.demo</field>
+				      <field name="arch" type="xml">
+				        <calendar string="Service Request" date_start="date_start" date_stop="date_stop">
+				           <field name="vehicle_type"/>
+				       </calendar>
+				      </field>
+				    </record>
+
+					<record model="ir.actions.act_window" id="lts_action_window_inquirey">
+				      <field name="name">Inquirey</field>
+				      <field name="res_model">inquirey.inquirey.demo</field>
+				      <field name="view_mode">tree,form,calendar</field>
+				    </record>
+				     <menuitem name="Inquirey Data" id="lts_menu_1_inquirey" parent = "lts_menu_root" action="lts_action_window_inquirey"/>
+
+	</data>
+</odoo>
