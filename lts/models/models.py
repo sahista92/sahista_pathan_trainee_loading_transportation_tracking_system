@@ -13,7 +13,6 @@ class agent_registration(models.Model):
     gender = fields.Selection([('male','Male'),('female','Female'),('other','Other')])
     address = fields.Text(required=True)
     city = fields.Char()
-    password = fields.Char(required=True)
     state= fields.Selection([('draft','draft'),('done','done'),('cancel','cancel')], default='draft')
 
     

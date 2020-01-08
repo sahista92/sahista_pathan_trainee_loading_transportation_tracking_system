@@ -12,7 +12,6 @@
 		          <field name="address"/>
 		          <field name="city"/>
 		          <field name="state"/>
-		          <field name="password"/>
 		        </tree>
 		      </field>
 		  </record>
@@ -25,7 +24,10 @@
 		                <field name="city" filter_domain="[('city','not ilike',self),('district','not ilike',self)]"/>
 		              </search>
 		      </field>
-		  </record>				  
+		  </record>	
+
+
+			  
 
 
 		<record model="ir.actions.act_window" id="lts_action_window_transporter_regi">

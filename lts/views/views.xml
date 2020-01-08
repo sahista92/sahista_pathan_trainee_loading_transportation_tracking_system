@@ -12,11 +12,58 @@
               <field name="gender"/>
               <field name="address"/>
               <field name="city"/>
-              <field name="password"/>
         </tree>
 
       </field>
     </record>
+
+    <record id="trans_kanban_view" model="ir.ui.view">
+            <field name="name">Agent_kanban</field>
+            <field name="model">agent_registration.agent_registration</field>
+            <field name="arch" type="xml">
+          <kanban class="o_res_partner_kanban" default_group_by="gender">
+              <field name="name"/>
+              <field name="email"/>
+              <field name="c_number"/>
+              <field name="gender"/>
+              <field name="address"/>
+              <field name="city"/>
+              <field name="state"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div class="o_kanban_image">
+                                      <t t-esc="record.name.value"/>
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <strong class="o_kanban_record_title">
+                                    <field name="email"/>
+                                    </strong>
+                                <div t-if="record.c_number.value">
+                                        <t t-esc="record.c_number.value"/>
+                                </div>
+                                <div t-if="record.gender.value">
+                                        <t t-esc="record.gender.value"/>
+                                </div>
+                                <div t-if="record.address.value">
+                                        <t t-esc="record.address.value"/>
+                                </div>
+                                <div t-if="record.city.value">
+                                        <t t-esc="record.city.value"/>
+                                </div>
+                                <div t-if="record.state.value">
+                                        <t t-esc="record.state.value"/>
+                                </div>
+                                </div>
+                            </div>
+                        </t>s
+                    </templates>
+                </kanban>
+            </field>
+        </record> -->
+        
+
+
 
 
     <record model="ir.ui.view" id="lts_list_agent_regi">
@@ -39,7 +86,6 @@
               <field name="gender"/>
               <field name="address"/>
               <field name="city"/>
-              <field name="password"/>
           </group>
         </sheet>
         </form>
@@ -50,7 +96,7 @@
       <field name="name">Agent_form</field>
       <field name="model">agent_registration.agent_registration</field>
       <field name="arch" type="xml">
-            <search string="Facility Search">
+            <search string="Gender Search">
                 <field name="gender" widget="selection"/>
                 <group string="Group By">
                   <filter name="group_by_Gender" string="Gender" context="{'group_by': 'gender'}"/>
@@ -63,7 +109,7 @@
     <record model="ir.actions.act_window" id="lts_action_window_agent_regi">
       <field name="name">Details</field>
       <field name="res_model">agent_registration.agent_registration</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">kanban,tree,form</field>
     </record>
 
 
