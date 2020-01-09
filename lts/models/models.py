@@ -27,7 +27,11 @@ class agent_registration(models.Model):
     def button_cancel(self):
         self.write({'state': 'cancel'})
         return True
-    
+                
+
+
+
+
 
 class inquirey(models.Model):
     _name = 'inquirey.inquirey.demo'
@@ -39,7 +43,7 @@ class inquirey(models.Model):
     duration =fields.Float()
     vehicle_type = fields.Selection(store='True',selection=[('2','2 wheeler'),('3','3 wheeler'),('4','4 wheeler')])
     vehicle_capacity = fields.Selection(store='True',selection=[('250','250 kg'),('550','550 kg'),('1000','1000 kg')])
-    vehicle_speed = fields.Selection(store='True',selection=[('70 ','70 kmph'),('50','50 kmph '),('60','60 kmph')])
+    vehicle_speed = fields.Selection(store='True',selection=[('70','70 kmph'),('50','50 kmph '),('60','60 kmph')])
     date_start=fields.Date()
     date_stop=fields.Date()
 
@@ -78,3 +82,8 @@ class  transporter_regi(models.Model):
     _description = 'transporter_regi.transporter_regi'
 
     
+class Wizard(models.TransientModel):
+    _name = 'inquirey.wizard'
+    _description = "Wizard: Quick inquirey of vehicles"
+
+    order_number = fields.Many2one('order.order',required=True)
