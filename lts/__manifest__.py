@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     'name': "LTS",
 
@@ -18,7 +17,7 @@
     'version': '0.1',
 
 
-    'depends': ['base','web'],
+    'depends': ['website'],
 
 
     'data': [
@@ -29,6 +28,7 @@
         'views/transporter.xml',
         'views/wizard.xml',
         'views/report.xml', 
+        'views/templates.xml'
     ],
     'demo': [
 

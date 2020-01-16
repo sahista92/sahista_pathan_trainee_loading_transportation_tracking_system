@@ -3,15 +3,15 @@ from odoo.exceptions import ValidationError
 from datetime import date 
 
 
-class agent_registration(models.Model):
-    _name = 'agent_registration.agent_registration'
-    _description = 'Agent_Registration.Agent_Registration'
+class agent(models.Model):
+    _name = 'agent.agent'
+    _description = 'Agent.Agent'
 
     name = fields.Char(required=True)
     email = fields.Char(required=True)
     c_number = fields.Integer()
     gender = fields.Selection([('male','Male'),('female','Female'),('other','Other')])
-    address = fields.Text(required=True)
+    address = fields.Text()
     city = fields.Char()
     state= fields.Selection([('draft','draft'),('done','done'),('cancel','cancel')], default='draft')
 
@@ -63,6 +63,17 @@ class inquirey(models.Model):
         		self.vehicle_speed = '60'
 	
 
+
+    @api.model
+    def create(self, vals):
+        print(vals['source_add'])
+        return super(inquirey, self).create(vals)
+
+    def write(self, vals):
+        print(vals['KM'])
+        return super(inquirey, self).write(vals)
+
+
     @api.constrains('source_add', 'desti_add')
     def _check_add(self):
     	for record in self:
@@ -76,10 +87,10 @@ class order(models.Model):
 
     order_number = fields.Integer(required=True)
 
-class  transporter_regi(models.Model):
-    _name = 'transporter_regi.transporter_regi'
-    _inherit = 'agent_registration.agent_registration'
-    _description = 'transporter_regi.transporter_regi'
+class  transporter(models.Model):
+    _name = 'transporter.transporter'
+    _inherit = 'agent.agent'
+    _description = 'transporter.transporter'
 
     
 class Wizard(models.TransientModel):

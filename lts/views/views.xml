@@ -3,7 +3,7 @@
 
     <record model="ir.ui.view" id="lts_list_agent_regi_tree">
       <field name="name">Agent_form</field>
-      <field name="model">agent_registration.agent_registration</field>
+      <field name="model">agent.agent</field>
       <field name="arch" type="xml">
         <tree>
               <field name="name"/>
@@ -19,7 +19,7 @@
 
     <record id="trans_kanban_view" model="ir.ui.view">
             <field name="name">Agent_kanban</field>
-            <field name="model">agent_registration.agent_registration</field>
+            <field name="model">agent.agent</field>
             <field name="arch" type="xml">
           <kanban class="o_res_partner_kanban" default_group_by="gender">
               <field name="name"/>
@@ -68,12 +68,12 @@
 
     <record model="ir.ui.view" id="lts_list_agent_regi">
       <field name="name">Agent_form</field>
-      <field name="model">agent_registration.agent_registration</field>
+      <field name="model">agent.agent</field>
       <field name="arch" type="xml">
         <form string="description">
           <header>
-            <button name="button_done" states="draft,cancel" string="Done" type="object"/>
-            <button name="button_reset" states="done,cancel"  string="Reset to Draft" class="btn-success" type="object"/>
+            <button name="(button_done)" states="draft,cancel" string="Done" type="object"/>
+            <button name="button_reset" states="done,cancel"  string="Reset to Draft" class="btn-success" type="action"/>
             <button name="button_cancel" states="done,draft" string="Cancel" type="object"/>
 
             <field name="state" widget="statusbar" statusbar_visible="draft,done,cancel"/>
@@ -94,7 +94,7 @@
 
   <record model="ir.ui.view" id="lts_list_agent_regi_search">
       <field name="name">Agent_form</field>
-      <field name="model">agent_registration.agent_registration</field>
+      <field name="model">agent.agent</field>
       <field name="arch" type="xml">
             <search string="Gender Search">
                 <field name="gender" widget="selection"/>
@@ -108,14 +108,14 @@
 
     <record model="ir.actions.act_window" id="lts_action_window_agent_regi">
       <field name="name">Details</field>
-      <field name="res_model">agent_registration.agent_registration</field>
+      <field name="res_model">agent.agent</field>
       <field name="view_mode">kanban,tree,form</field>
     </record>
 
 
     <menuitem name="Loading Transportation System" id="lts_menu_root"/>
 
-    <menuitem name="Agent-Registration" id="lts_menu_1_agent_regi" parent="lts_menu_root" action="lts_action_window_agent_regi"/>
+    <menuitem name="Agent" id="lts_menu_1_agent_regi" parent="lts_menu_root" action="lts_action_window_agent_regi"/>
 
  
   </data>
