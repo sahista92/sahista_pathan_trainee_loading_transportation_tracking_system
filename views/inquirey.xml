@@ -1,0 +1,91 @@
+<!-- <odoo>
+	<data>
+				<record model="ir.ui.view" id="inquirey_view">
+			      <field name="name">inquirey</field>
+			      <field name="model">inquirey.inquirey.demo</field>
+			      <field name="arch" type="xml">
+			        <tree>
+			          <field name="source_add"/>
+			          <field name="desti_add"/>
+			          <field name="KM"/>
+			          <field name="duration"/>
+			          <field name="vehicle_type"/>
+			          <field name="vehicle_capacity"/>
+			          <field name="vehicle_speed"/>
+			          <field name="date_start"/>
+			          <field name="date_stop"/>         
+			        </tree>
+			      </field>
+			    </record>
+
+			        <record model="ir.ui.view" id="inquirey_cal">
+				      <field name="name">inquirey2</field>
+				      <field name="model">inquirey.inquirey.demo</field>
+				      <field name="arch" type="xml">
+				        <calendar string="Service Request" date_start="date_start" date_stop="date_stop">
+				           <field name="vehicle_type"/>
+				       </calendar>
+				      </field>
+				    </record>
+
+
+				   	<record id="inquery_graph_view" model="ir.ui.view">
+            			<field name="name">balance.graph</field>
+            			<field name="model">inquirey.inquirey.demo</field>
+            			<field name="arch" type="xml">
+                			<graph string="inquery graph">
+                    			<field name="vehicle_type"/>
+                    			<field name="vehicle_capacity"/>
+                			</graph>
+            			</field>
+        			</record>
+
+
+				    <record model="ir.ui.view" id="inquirey_pivot">
+				      <field name="name">inquirey1</field>
+				      <field name="model">inquirey.inquirey.demo</field>
+				      <field name="arch" type="xml">
+				      		<pivot string="inquirey">
+				      				<field name="KM" type="row"/>
+				      				<field name="duration" type="col"/>
+				      		</pivot>
+				      </field>
+				    </record>
+
+					
+
+					 <record id='dashboard_view' model='ir.ui.view'>
+					            <field name='name'>dashboard.view</field>
+					            <field name='model'>inquirey.inquirey.demo</field>
+					            <field name="mode">primary</field>
+					            <field name='arch' type='xml'>
+					                <dashboard>
+					                    <view type="pivot" ref="lts.inquirey_pivot"/>
+					                	<view type="graph" ref="lts.inquery_graph_view"/>
+					                </dashboard>
+					            </field>
+					    </record>
+
+
+
+					<record model="ir.actions.act_window" id="inquirey_action">
+				      <field name="name">Inquirey</field>
+				      <field name="res_model">inquirey.inquirey.demo</field>
+				      <field name="view_mode">form,calendar,graph,pivot</field>
+				    </record>
+
+				    <record model="ir.actions.act_window" id="inquirey_action_dashboard">
+				      <field name="name">Inquirey</field>
+				      <field name="res_model">inquirey.inquirey.demo</field>
+				      <field name="view_mode">dashboard</field>
+				    </record>
+
+
+
+
+				     <menuitem name="Inquirey" id="lts_menu_1_inquirey" parent = "lts_menu_root1" action="inquirey_action"/>
+
+				      <menuitem name="Reporting"  id="lts_reporting" parent="lts_menu_root1" action="inquirey_action_dashboard"/>	
+
+	</data>
+</odoo> -->

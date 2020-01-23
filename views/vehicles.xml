@@ -1,0 +1,29 @@
+<!-- <odoo>
+	<data>
+				<record model="ir.ui.view" id="vehicles_view">
+			      <field name="name">vehicles</field>
+			      <field name="model">vehicles.vehicles</field>
+			      <field name="arch" type="xml">
+			        <tree>
+			          <field name="vehicle_type"/>
+			          <field name="vehicle_capacity"/>
+			          <field name="vehicle_speed"/>
+			          <field name="vehicle_weight"/>
+			          <field name="vehicle_length"/>
+			          <field name="vehicle_Engine"/>         
+			        </tree>
+			      </field>
+			    </record>
+
+
+				<record model="ir.actions.act_window" id="vehicles_action">
+				      <field name="name">vehicles</field>
+				      <field name="res_model">vehicles.vehicles</field>
+				      <field name="view_mode">tree,form</field>
+				</record>
+
+			<menuitem name="vehicles" id="T_vehicle_id" parent="lts_configration" action="vehicles_action" />
+
+ 
+	</data>
+</odoo> -->

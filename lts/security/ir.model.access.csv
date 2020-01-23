@@ -1,5 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_inquirey_inquirey_demo,access_inquirey_inquirey_demo,model_inquirey_inquirey_demo,base.group_user,1,1,1,1
-access_order_order,access_order_order,model_order_order,base.group_user,1,1,1,1
-access_agent_agent,access_agent_agent,model_agent_agent,base.group_user,1,1,1,1 
-access_transporter_transporter,access_transporter_transporter,model_transporter_transporter,base.group_user,1,1,1,1

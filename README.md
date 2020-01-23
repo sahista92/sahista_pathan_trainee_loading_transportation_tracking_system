@@ -1,2 +1,0 @@
-# sahista_pathan_trainee_loading_transportation_tracking_system
- 

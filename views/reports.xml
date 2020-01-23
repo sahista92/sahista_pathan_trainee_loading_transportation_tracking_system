@@ -1,0 +1,63 @@
+<odoo>
+    <data>
+                    <report
+                    id="drivers_reports"
+                    model="drivers.drivers"
+                    string="Drivers-Reports"
+                    name="lts.drivers_report_view"
+                    file="lts.drivers_report_view"
+                    report_type="qweb-pdf"
+                    attachment_use="True" />
+
+                    <template id="drivers_report_view">
+                        <t t-call="web.html_container">
+                            <t t-call="web.external_layout">
+                                <div class="page">
+                                    <t t-foreach="docs" t-as="doc">
+                                        <h2><center>Driver-Report</center></h2>
+                                            <td>
+                                                <img t-attr-src = "doc.Dphoto" widget="image" 
+                                                options="{'size': [70,70]}"/>
+                                                <br/>
+                                            </td>
+                                            <td>
+                                                <b>Name:</b>
+                                                <h2 t-field="doc.name"/><br/>
+                                            </td>
+                                            <td>
+                                                <b>Contact_Number</b>
+                                                <h3 t-field="doc.contactnumber"/><br/>
+                                            </td>
+                                            <td>
+                                                <b>Email</b>
+                                                <h3 t-field="doc.email"/><br/>
+                                            </td>
+                                            <td>
+                                                <b>Address</b>
+                                                <h3 t-field="doc.address"/><br/>
+                                            </td>
+                                            <td>
+                                                <b>Licence_Availability</b>
+                                                <h3 t-field="doc.Licence"/><br/>
+                                            </td>
+                                            <td>
+                                                <b>City</b>
+                                                <h3 t-field="doc.city"/><br/>
+                                            </td>
+                                            <td>
+                                                <b>Pincode</b>
+                                                <h3 t-field="doc.pincode"/><br/>
+                                            </td>
+                                            <td>
+                                                <b>State</b>
+                                                <h3 t-field="doc.state"/><br/>
+                                            </td>
+                                            
+                                    </t>
+                                </div>
+                            </t>
+                        </t>
+                    </template>
+
+    </data>
+</odoo>

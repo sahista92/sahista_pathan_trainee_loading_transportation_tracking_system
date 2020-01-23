@@ -1,0 +1,32 @@
+<!-- <odoo>
+	<data>
+				<record model="ir.ui.view" id="driver_view">
+			      <field name="name">driver</field>
+			      <field name="model">drivers.drivers</field>
+			      <field name="arch" type="xml">
+			        <tree>
+			          <field name="name"/>
+			          <field name="contactnumber"/>
+			          <field name="email"/>
+			          <field name="address"/>
+			          <field name="Licence"/>
+			          <field name="photo"
+       								widget="image"
+       								class="oe_avatar"
+       								options="{'preview_image': 'image_small', 'size': [30, 30]}"/>
+        
+			        </tree>
+			      </field>
+			    </record>
+
+					<record model="ir.actions.act_window" id="driver_action">
+				      <field name="name">Drivers</field>
+				      <field name="res_model">drivers.drivers</field>
+				      <field name="view_mode">tree,form</field>
+				    </record>
+
+				    <menuitem name="Drivers" id="t_driver_id" parent="lts_configration" action="driver_action" />
+<!-				     <menuitem name="Drivers" id="lts_menu_1_driver" parent = "lts_menu_root1" action="lts_action_window_driver"/>
+ -->
+	<!-- </data> -->
+<!-- </odoo> --> 

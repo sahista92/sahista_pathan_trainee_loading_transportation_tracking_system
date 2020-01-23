@@ -1,0 +1,282 @@
+<odoo>
+	<data>
+		 <record model="ir.ui.view" id="transporter_regi"> 
+		      <field name="name">TR list</field>
+		      <field name="model">transporter.transporter</field>
+		      <field name="arch" type="xml">
+		        <tree>
+		          <field name="name"/>
+		          <field name="email"/>
+		          <field name="contactnumber"/>
+		          <field name="gender"/>
+		          <field name="address"/>
+		          <field name="city"/>
+		          <field name= "pincode"/>
+		          <field name="state"/>
+		        </tree>
+		      </field>
+		  </record>
+		  <record model="ir.ui.view" id="transporter_regi_form"> 
+		      <field name="name">TR list</field>
+		      <field name="model">transporter.transporter</field>
+		      <field name="arch" type="xml">
+		        <form>
+		        	<sheet>
+		        		<group>
+		        			  <field name="name"/>
+					          <field name="email"/>
+					          <field name="contactnumber"/>
+					          <field name="gender"/>
+						      <field name="address"/>
+						      <field name="city"/>
+						      <field name= "pincode"/>
+						      <field name="state"/>
+							</group>
+		        	</sheet>
+		        </form>
+		      </field>
+		  </record>
+
+
+
+
+		 <record model="ir.ui.view" id="lts_list_transporter_regi_search_filter"> 
+		      <field name="name">TR list</field>
+		      <field name="model">transporter.transporter</field>
+		      <field name="arch" type="xml">
+				      <search string="City Search">
+		                <filter name="City" string="Viramgam" domain="[('city', '=', 'vgm')]"/>
+		                <field name="city" filter_domain="[('city','not ilike',self),('district','not ilike',self)]"/>
+		              </search>
+		      </field>
+		  </record>
+
+
+
+		  	<record model="ir.ui.view" id="inquirey_tree_view">
+			      <field name="name">inquirey</field>
+			      <field name="model">inquirey.inquirey.demo</field>
+			      <field name="arch" type="xml">
+			        <tree>
+			          <field name="source_add"/>
+			          <field name="desti_add"/>
+			          <field name="distance"/>
+			          <field name="duration"/>
+			          <field name= "weight"/>
+			          <field name="vehicle_type"/>
+			          <field name="vehicle_capacity"/>
+			          <field name="vehicle_speed"/>
+			          <field name="date_start"/>
+			          <field name="date_stop"/>      
+			        </tree>
+			      </field>
+			    </record>
+
+			   <record model="ir.ui.view" id="inquirey_form_view">
+			      <field name="name">inquirey</field>
+			      <field name="model">inquirey.inquirey.demo</field>
+			      <field name="arch" type="xml">
+			        <form>
+			        	<sheet>
+			        		<group>
+						          <field name="source_add"/>
+						          <field name="desti_add"/>
+						          <field name="distance"/>
+						          <field name="duration"/>
+						          <field name= "weight"/>
+						          <field name="date_start"/>
+						          <field name="date_stop"/>
+						    </group>
+						    <group>
+						    		<notebook>
+						    			<page string="Vehicl_Details">
+						    				<group>
+						    				  <field name="vehicle_type"/>
+									          <field name="vehicle_capacity"/>
+									          <field name="vehicle_speed"/>
+									        </group>
+						    			</page>
+						    		</notebook>
+						    </group>
+						</sheet>      
+			        </form>
+			      </field>
+			    </record>
+
+
+			        <record model="ir.ui.view" id="inquirey_cal">
+				      <field name="name">inquirey2</field>
+				      <field name="model">inquirey.inquirey.demo</field>
+				      <field name="arch" type="xml">
+				        <calendar string="Service Request" date_start="date_start" date_stop="date_stop">
+				           <field name="vehicle_type"/>
+				       </calendar>
+				      </field>
+				    </record>
+
+
+				   	<record id="inquery_graph_view" model="ir.ui.view">
+            			<field name="name">Inquirey.graph</field>
+            			<field name="model">inquirey.inquirey.demo</field>
+            			<field name="arch" type="xml">
+                			<graph string="inquery graph">
+                    			<field name="vehicle_type"/>
+                    			<field name="vehicle_capacity"/>
+                			</graph>
+            			</field>
+        			</record>
+
+
+				    <record model="ir.ui.view" id="inquirey_pivot">
+				      <field name="name">inquirey1</field>
+				      <field name="model">inquirey.inquirey.demo</field>
+				      <field name="arch" type="xml">
+				      		<pivot string="inquirey">
+				      				<field name="distance" type="row"/>
+				      				<field name="duration" type="col"/>
+				      		</pivot>
+				      </field>
+				    </record>
+
+					
+
+					 <record id='dashboard_view' model='ir.ui.view'>
+					            <field name='name'>dashboard.view</field>
+					            <field name='model'>inquirey.inquirey.demo</field>
+					            <field name="mode">primary</field>
+					            <field name='arch' type='xml'>
+					                <dashboard>
+					                    <view type="pivot" ref="lts.inquirey_pivot"/>
+					                	<view type="graph" ref="lts.inquery_graph_view"/>
+					                </dashboard>
+					            </field>
+					    </record>
+
+			<record id="driver_kanban_view" model="ir.ui.view">
+            <field name="name">Driverkanban</field>
+            <field name="model">drivers.drivers</field>
+            <field name="arch" type="xml">
+                <kanban class="o_res_partner_kanban">
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                            		<field name="photo"
+       								widget="image"
+       								class="oe_kanban_avatar pull-right" 
+       								options="{'size': [110,110]}"/><br/>
+				                    <strong>Name--</strong><field name="name"/><br/>
+				                    <strong>ContactNumber--</strong><field name="contactnumber"/><br/>
+					        		<strong>Email--</strong><field name="email"/><br/>
+				                    <strong>Address--</strong><field name="address"/><br/>
+				                    <strong>Licence--</strong><field name="Licence"/><br/>
+				                    <strong>Licence_Number--</strong><field name="Licence_Number"/><br/>
+				                    <strong>City--</strong><field name="city"/><br/>
+				                    <strong>Pincode--</strong><field name="pincode"/><br/>
+							       	<strong>State--</strong><field name="state"/><br/>
+			      
+                                </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="driver_form_view">
+			      <field name="name">Drivers</field>
+			      <field name="model">drivers.drivers</field>
+			      <field name="arch" type="xml">
+			        <form>
+			          <sheet>
+			          	<group>
+				          	<group>
+				          		  <field name="name"/>
+						          <field name="contactnumber"/>
+						          <field name="email"/>
+						          <field name="address"/>
+						          <field name= "Licence"/>
+						    </group> 
+						    <group>
+						          <field name="Licence_Number" attrs="{'invisible' : [('Licence','!=', 'yes')]}"/>
+						          <field name="city"/>
+						          <field name="pincode"/>
+						          <field name="state"/>
+						    </group>
+						</group>
+			          </sheet>    
+			        </form>
+			      </field>
+			    </record>
+
+
+
+			<record model="ir.ui.view" id="vehicles_view">
+			      <field name="name">vehicles</field>
+			      <field name="model">vehicles.vehicles</field>
+			      <field name="arch" type="xml">
+			        <tree>
+			          <field name="vehicle_type"/>
+			          <field name="vehicle_capacity"/>
+			          <field name="vehicle_speed"/>
+			          <field name="vehicle_weight"/>
+			          <field name="vehicle_length"/>
+			          <field name="vehicle_Engine"/>         
+			        </tree>
+			      </field>
+			</record>
+
+
+		<record model="ir.actions.act_window" id="transporter_regi_action">
+	      <field name="name">Transporter</field>
+	      <field name="res_model">transporter.transporter</field>
+	      <field name="view_mode">tree,form</field>
+	    </record>
+
+	   <record model="ir.actions.act_window" id="inquirey_action">
+				  <field name="name">Inquirey</field>
+				  <field name="res_model">inquirey.inquirey.demo</field>
+				  <field name="view_mode">tree,form,calendar,graph,pivot</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="inquirey_action_dashboard">
+				<field name="name">Inquirey</field>
+				<field name="res_model">inquirey.inquirey.demo</field>
+				<field name="view_mode">dashboard</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="driver_action">
+				<field name="name">Drivers</field>
+				<field name="res_model">drivers.drivers</field>
+				<field name="view_mode">kanban,tree,form</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="vehicles_action">
+				    <field name="name">vehicles</field>
+				    <field name="res_model">vehicles.vehicles</field>
+				    <field name="view_mode">tree,form</field>
+		</record>
+
+
+
+
+
+		<menuitem name="Loading Transportation System" id="lts_menu_root1" web_icon="lts,static/description/truck.png"/>
+
+	        <menuitem name="Transporter" id="lts_menu_1_tranporter_regi" parent = "lts_menu_root1" action="transporter_regi_action"/>
+
+	        <menuitem name="Configration"  id="lts_configration" parent="lts_menu_root1" />
+
+	        <menuitem name="Inquirey" id="lts_menu_1_inquirey" parent = "lts_menu_root1" action="inquirey_action"/>
+
+			<menuitem name="Reporting"  id="lts_reporting" parent="lts_menu_root1" action="inquirey_action_dashboard"/>	
+
+
+			<menuitem name="Drivers" id="t_driver_id" parent="lts_configration" action="driver_action" />
+
+			<menuitem name="vehicles" id="T_vehicle_id" parent="lts_configration" action="vehicles_action" />
+
+
+
+
+	       
+	</data>
+</odoo>
