@@ -91,8 +91,8 @@
             <field name="duration">13h 16 min </field>
             <field name="weight">550 kg</field>
             <field name="vehicle_type" ref="lts.object7"></field>
-            <field name="date_start">2020-12-01</field>
-            <field name="date_stop">2020-12-03</field>
+            <field name="from_date">2020-12-01</field>
+            <field name="to_date">2020-12-03</field>
           </record>
 
 
@@ -103,8 +103,8 @@
             <field name="duration">24 h </field>
             <field name="weight">800 kg</field>
             <field name="vehicle_type" ref="lts.object8"></field>
-            <field name="date_start">2020-12-15</field>
-            <field name="date_stop">2020-12-30</field>
+            <field name="from_date">2020-8-15</field>
+            <field name="to_date">2020-8-30</field>
           </record>
 
            <record id="object13" model="inquirey.inquirey.demo">
@@ -114,8 +114,8 @@
             <field name="duration">9 h 24 min </field>
             <field name="weight">650 kg</field>
             <field name="vehicle_type" ref="lts.object11"></field>
-            <field name="date_start">2020-7-01</field>
-            <field name="date_stop">2020-8-03</field>
+            <field name="from_date">2020-7-01</field>
+            <field name="to_date">2020-8-03</field>
           </record>
 
 
@@ -126,8 +126,8 @@
             <field name="duration">820.1 km </field>
             <field name="weight">750 kg</field>
             <field name="vehicle_type" ref="lts.object12"></field>
-            <field name="date_start">2020-2-15</field>
-            <field name="date_stop">2020-3-30</field>
+            <field name="from_date">2020-2-15</field>
+            <field name="to_date">2020-3-30</field>
           </record>
 
 

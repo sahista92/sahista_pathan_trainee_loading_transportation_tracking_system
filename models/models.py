@@ -1,6 +1,7 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 from datetime import date 
+import re
 
 class  transporter(models.Model):
     _name = 'transporter.transporter'
@@ -15,11 +16,7 @@ class  transporter(models.Model):
     pincode = fields.Integer()
     state= fields.Char()
 
-    @api.constrains('contactnumber')
-    def _check_number(self):
-        number = self.contactnumber
-        if number and len(str(abs(number))) > 10:
-            raise ValidationError(_('Number of digits must on exceed 10'))
+
  
 
 class inquirey(models.Model):
@@ -34,8 +31,8 @@ class inquirey(models.Model):
     vehicle_type = fields.Many2one('vehicles.vehicles','vehicle_type')
     vehicle_capacity = fields.Char(related='vehicle_type.vehicle_capacity', store=True)
     vehicle_speed = fields.Char(related='vehicle_type.vehicle_speed',store=True)
-    date_start=fields.Date()
-    date_stop=fields.Date()
+    from_date=fields.Date()
+    to_date=fields.Date()
 
 
     @api.constrains('source_add', 'desti_add')
@@ -53,7 +50,7 @@ class drivers(models.Model):
     contactnumber = fields.Integer()
     email = fields.Char()
     address = fields.Text(required=True)
-    Licence = fields.Selection(store=True,selection=[('yes','yes'),('no','no')], default="no")
+    Licence = fields.Selection(store=True,selection=[('yes','yes'),('no','no')], default="yes")
     Licence_Number = fields.Char()
     city = fields.Char()
     pincode = fields.Char()
@@ -63,7 +60,7 @@ class drivers(models.Model):
 
 class vehicles(models.Model):
     _name = 'vehicles.vehicles'
-    _description = 'vehicles.vehicles'
+    _description = 'vehicles.vehicle_speed'
     _rec_name = 'vehicle_type'
 
     vehicle_type = fields.Char()

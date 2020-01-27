@@ -12,9 +12,11 @@
 
 
     'data': [
+        'security/security.xml',
         'security/ir.model.access.csv',
         'views/transporter.xml',
-        'views/reports.xml'
+        'views/reports.xml',
+
     ],
     'demo': [
             'demo/demo.xml'

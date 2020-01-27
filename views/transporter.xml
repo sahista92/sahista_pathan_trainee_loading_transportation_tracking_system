@@ -66,8 +66,8 @@
 			          <field name="vehicle_type"/>
 			          <field name="vehicle_capacity"/>
 			          <field name="vehicle_speed"/>
-			          <field name="date_start"/>
-			          <field name="date_stop"/>      
+			          <field name="from_date"/>
+			          <field name="to_date"/>      
 			        </tree>
 			      </field>
 			    </record>
@@ -84,8 +84,8 @@
 						          <field name="distance"/>
 						          <field name="duration"/>
 						          <field name= "weight"/>
-						          <field name="date_start"/>
-						          <field name="date_stop"/>
+						          <field name="from_date"/>
+						          <field name="to_date"/>
 						    </group>
 						    <group>
 						    		<notebook>
@@ -108,7 +108,7 @@
 				      <field name="name">inquirey2</field>
 				      <field name="model">inquirey.inquirey.demo</field>
 				      <field name="arch" type="xml">
-				        <calendar string="Service Request" date_start="date_start" date_stop="date_stop">
+				        <calendar string="Service Request" date_start="from_date" date_stop="to_date">
 				           <field name="vehicle_type"/>
 				       </calendar>
 				      </field>
@@ -119,9 +119,9 @@
             			<field name="name">Inquirey.graph</field>
             			<field name="model">inquirey.inquirey.demo</field>
             			<field name="arch" type="xml">
-                			<graph string="inquery graph">
-                    			<field name="vehicle_type"/>
+                			<graph string="Inquery Graph">
                     			<field name="vehicle_capacity"/>
+                    			<field name="vehicle_speed"/>
                 			</graph>
             			</field>
         			</record>
@@ -132,8 +132,10 @@
 				      <field name="model">inquirey.inquirey.demo</field>
 				      <field name="arch" type="xml">
 				      		<pivot string="inquirey">
-				      				<field name="distance" type="row"/>
-				      				<field name="duration" type="col"/>
+				      				<field name="from_date" type="row"/>
+				      				<field name="to_date" type="row"/>
+				      				<field name="from_date" type="col"/>
+				      				<field name="to_date" type="col"/>
 				      		</pivot>
 				      </field>
 				    </record>
@@ -146,8 +148,8 @@
 					            <field name="mode">primary</field>
 					            <field name='arch' type='xml'>
 					                <dashboard>
-					                    <view type="pivot" ref="lts.inquirey_pivot"/>
 					                	<view type="graph" ref="lts.inquery_graph_view"/>
+					                    <view type="pivot" ref="lts.inquirey_pivot"/>
 					                </dashboard>
 					            </field>
 					    </record>
@@ -188,19 +190,24 @@
 			        <form>
 			          <sheet>
 			          	<group>
-				          	<group>
+				          	
 				          		  <field name="name"/>
 						          <field name="contactnumber"/>
 						          <field name="email"/>
 						          <field name="address"/>
-						          <field name= "Licence"/>
-						    </group> 
-						    <group>
-						          <field name="Licence_Number" attrs="{'invisible' : [('Licence','!=', 'yes')]}"/>
 						          <field name="city"/>
 						          <field name="pincode"/>
 						          <field name="state"/>
-						    </group>
+						</group>
+						<group>
+								<notebook>
+									<page string="Licence-Details">
+										<group>
+											<field name= "Licence"/>
+								  			<field name="Licence_Number" attrs="{'invisible' : [('Licence','!=', 'yes')]}"/>
+										</group>
+									</page>
+								</notebook>
 						</group>
 			          </sheet>    
 			        </form>
@@ -210,7 +217,7 @@
 
 
 			<record model="ir.ui.view" id="vehicles_view">
-			      <field name="name">vehicles</field>
+			      <field name="name">Viramgamehicles</field>
 			      <field name="model">vehicles.vehicles</field>
 			      <field name="arch" type="xml">
 			        <tree>
@@ -259,7 +266,7 @@
 
 
 
-		<menuitem name="Loading Transportation System" id="lts_menu_root1" web_icon="lts,static/description/truck.png"/>
+		<menuitem name="Loading Transportation System" id="lts_menu_root1" web_icon="lts,static/description/logo6.png"/>
 
 	        <menuitem name="Transporter" id="lts_menu_1_tranporter_regi" parent = "lts_menu_root1" action="transporter_regi_action"/>
 
@@ -267,7 +274,7 @@
 
 	        <menuitem name="Inquirey" id="lts_menu_1_inquirey" parent = "lts_menu_root1" action="inquirey_action"/>
 
-			<menuitem name="Reporting"  id="lts_reporting" parent="lts_menu_root1" action="inquirey_action_dashboard"/>	
+			<menuitem name="Reporting"  id="lts_reporting" parent="lts_menu_root1" action="inquirey_action_dashboard" groups="lts.group_manager"/>	
 
 
 			<menuitem name="Drivers" id="t_driver_id" parent="lts_configration" action="driver_action" />
