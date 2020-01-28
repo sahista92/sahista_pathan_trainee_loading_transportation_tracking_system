@@ -48,83 +48,77 @@
 
 
           <record id="object7" model="vehicles.vehicles">
-            <field name="vehicle_type">3 wheeler</field>
-            <field name="vehicle_capacity">600 kg</field>
-            <field name="vehicle_speed">75 kmph</field>
-            <field name="vehicle_weight">3.4 tons</field>
-            <field name="vehicle_length">500 m</field>
+            <field name="vehicle_type">3</field>
+            <field name="vehicle_capacity">600</field>
+            <field name="vehicle_speed">75</field>
+            <field name="vehicle_weight">3.4</field>
+            <field name="vehicle_length">500</field>
             <field name="vehicle_Engine">Detroit Series 60</field>
+             <field name="vehicle_image" type="base64" file="lts/static/description/t1.png"/>
           </record>
 
           <record id="object8" model="vehicles.vehicles">
-            <field name="vehicle_type">6 wheeler</field>
-            <field name="vehicle_capacity">1000 kg</field>
-            <field name="vehicle_speed">70 kmph</field>
-            <field name="vehicle_weight">8 tons</field>
-            <field name="vehicle_length">800 m</field>
+            <field name="vehicle_type">6</field>
+            <field name="vehicle_capacity">1000</field>
+            <field name="vehicle_speed">70</field>
+            <field name="vehicle_weight">8.3</field>
+            <field name="vehicle_length">800</field>
             <field name="vehicle_Engine">Cummins</field>
+            <field name="vehicle_image" type="base64" file="lts/static/description/t4.png"/>
           </record>
 
 
           <record id="object11" model="vehicles.vehicles">
-            <field name="vehicle_type">4 wheeler</field>
-            <field name="vehicle_capacity">850 kg</field>
-            <field name="vehicle_speed">80 kmph</field>
-            <field name="vehicle_weight">6 tons</field>
-            <field name="vehicle_length">450 m</field>
+            <field name="vehicle_type">4</field>
+            <field name="vehicle_capacity">850</field>
+            <field name="vehicle_speed">80</field>
+            <field name="vehicle_weight">6</field>
+            <field name="vehicle_length">450</field>
             <field name="vehicle_Engine">CAT Diesel</field>
+            <field name="vehicle_image" type="base64" file="lts/static/description/t3.png"/>
           </record>
 
           <record id="object12" model="vehicles.vehicles">
-            <field name="vehicle_type">6 wheeler</field>
-            <field name="vehicle_capacity">1000 kg</field>
-            <field name="vehicle_speed">70 kmph</field>
-            <field name="vehicle_weight">8 tons</field>
-            <field name="vehicle_length">800 m</field>
+            <field name="vehicle_type">6</field>
+            <field name="vehicle_capacity">1000</field>
+            <field name="vehicle_speed">70</field>
+            <field name="vehicle_weight">8</field>
+            <field name="vehicle_length">800</field>
             <field name="vehicle_Engine">Volvo</field>
-          </record>
-
-          <record id="object3" model="inquirey.inquirey.demo">
-            <field name="source_add">pune</field>
-            <field name="desti_add">mahesana</field>
-            <field name="distance">733.7 km</field>
-            <field name="duration">13h 16 min </field>
-            <field name="weight">550 kg</field>
-            <field name="vehicle_type" ref="lts.object7"></field>
-            <field name="from_date">2020-12-01</field>
-            <field name="to_date">2020-12-03</field>
+            <field name="vehicle_image" type="base64" file="lts/static/description/t5.png"/>
           </record>
 
 
-          <record id="object4" model="inquirey.inquirey.demo">
+
+          <record id="object13" model="inquirey.inquirey.demo">
             <field name="source_add">Gujarat</field>
-            <field name="desti_add">Punjab</field>
-            <field name="distance">1,309.8 km</field>
-            <field name="duration">24 h </field>
-            <field name="weight">800 kg</field>
-            <field name="vehicle_type" ref="lts.object8"></field>
-            <field name="from_date">2020-8-15</field>
-            <field name="to_date">2020-8-30</field>
-          </record>
-
-           <record id="object13" model="inquirey.inquirey.demo">
-            <field name="source_add">Uttrakhand</field>
-            <field name="desti_add">Delhi</field>
-            <field name="distance">350.1 km</field>
-            <field name="duration">9 h 24 min </field>
-            <field name="weight">650 kg</field>
-            <field name="vehicle_type" ref="lts.object11"></field>
-            <field name="from_date">2020-7-01</field>
-            <field name="to_date">2020-8-03</field>
+            <field name="desti_add">Pune</field>
+            <field name="distance">150</field>
+            <field name="duration">2.14</field>
+            <field name="weight">750</field>
+            <field name="vehicle_type" ref="lts.object7"></field>
+            <field name="from_date">2020-2-15</field>
+            <field name="to_date">2020-3-30</field>
           </record>
 
 
           <record id="object14" model="inquirey.inquirey.demo">
             <field name="source_add">Gujarat</field>
             <field name="desti_add">Pune</field>
-            <field name="distance">15 h 10 min</field>
-            <field name="duration">820.1 km </field>
-            <field name="weight">750 kg</field>
+            <field name="distance">150</field>
+            <field name="duration">2.14</field>
+            <field name="weight">750</field>
+            <field name="vehicle_type" ref="lts.object11"></field>
+            <field name="from_date">2020-2-15</field>
+            <field name="to_date">2020-3-30</field>
+          </record>
+
+          <record id="object15" model="inquirey.inquirey.demo">
+            <field name="source_add">Gujarat</field>
+            <field name="desti_add">Pune</field>
+            <field name="distance">150</field>
+            <field name="duration">2.14</field>
+            <field name="weight">750</field>
             <field name="vehicle_type" ref="lts.object12"></field>
             <field name="from_date">2020-2-15</field>
             <field name="to_date">2020-3-30</field>
@@ -140,8 +134,10 @@
             <field name="contactnumber">98989</field>
             <field name="email">ramesh@gmail.com</field>
             <field name="address">14,karannagar society,kadi</field>
+            <field name="Date_Of_Birth">1987-6-8</field>
             <field name="Licence">yes</field>
             <field name="Licence_Number">63hgk748lkj</field>
+            <field name="Valid_Date">2021-2-11</field>
             <field name="city">Ahemdabad </field>
             <field name="pincode">714525</field>
             <field name="state">Gujarat</field>
@@ -153,8 +149,10 @@
             <field name="contactnumber">98989</field>
             <field name="email">suresh@gmail.com</field>
             <field name="address">JESSIE SANTANA4325CA 94116</field>
+            <field name="Date_Of_Birth">1983-9-12</field>
             <field name="Licence">yes</field>
             <field name="Licence_Number">2536gfhy3652</field>
+            <field name="Valid_Date">2020-6-20</field>
             <field name="city">Ludhiyana </field>
             <field name="pincode">714525</field>
             <field name="state">Punjab</field>
@@ -168,8 +166,10 @@
             <field name="contactnumber">459685</field>
             <field name="email">arjun@gmail.com</field>
             <field name="address">44, sahesannagar society,</field>
+            <field name="Date_Of_Birth">1979-4-25</field>
             <field name="Licence">yes</field>
             <field name="Licence_Number">214podjmns</field>
+            <field name="Valid_Date">2026-8-22</field>
             <field name="city">Rudrapur </field>
             <field name="pincode">714525</field>
             <field name="state">Uttrakhand</field>
@@ -181,8 +181,10 @@
             <field name="contactnumber">698574</field>
             <field name="email">narain@gmail.com</field>
             <field name="address">JESSIE SANTANA4325CA 94116</field>
+            <field name="Date_Of_Birth">1981-6-4</field>
             <field name="Licence">yes</field>
             <field name="Licence_Number">3625dbghuyj</field>
+            <field name="Valid_Date">2022-2-15</field>
             <field name="city">Kashipur </field>
             <field name="pincode">365214</field>
             <field name="state">Uttrakhand</field>

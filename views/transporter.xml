@@ -120,8 +120,8 @@
             			<field name="model">inquirey.inquirey.demo</field>
             			<field name="arch" type="xml">
                 			<graph string="Inquery Graph">
-                    			<field name="vehicle_capacity"/>
                     			<field name="vehicle_speed"/>
+                    			<field name="vehicle_capacity"/>
                 			</graph>
             			</field>
         			</record>
@@ -170,8 +170,10 @@
 				                    <strong>ContactNumber--</strong><field name="contactnumber"/><br/>
 					        		<strong>Email--</strong><field name="email"/><br/>
 				                    <strong>Address--</strong><field name="address"/><br/>
+				                    <strong>Date_Of_Birth--</strong><field name="Date_Of_Birth"/><br/>
 				                    <strong>Licence--</strong><field name="Licence"/><br/>
 				                    <strong>Licence_Number--</strong><field name="Licence_Number"/><br/>
+				                    <strong>Valid-till--</strong><field name="Valid_Date"/><br/>
 				                    <strong>City--</strong><field name="city"/><br/>
 				                    <strong>Pincode--</strong><field name="pincode"/><br/>
 							       	<strong>State--</strong><field name="state"/><br/>
@@ -195,9 +197,11 @@
 						          <field name="contactnumber"/>
 						          <field name="email"/>
 						          <field name="address"/>
+						          <field name="Date_Of_Birth"/>
 						          <field name="city"/>
 						          <field name="pincode"/>
 						          <field name="state"/>
+						          <field name="photo" widget="image"/>
 						</group>
 						<group>
 								<notebook>
@@ -205,6 +209,8 @@
 										<group>
 											<field name= "Licence"/>
 								  			<field name="Licence_Number" attrs="{'invisible' : [('Licence','!=', 'yes')]}"/>
+								  			<field name="Valid_Date" attrs="{'invisible' : [('Licence','!=', 'yes')]}"/>
+
 										</group>
 									</page>
 								</notebook>
@@ -217,7 +223,7 @@
 
 
 			<record model="ir.ui.view" id="vehicles_view">
-			      <field name="name">Viramgamehicles</field>
+			      <field name="name">Vehicles</field>
 			      <field name="model">vehicles.vehicles</field>
 			      <field name="arch" type="xml">
 			        <tree>
@@ -226,10 +232,36 @@
 			          <field name="vehicle_speed"/>
 			          <field name="vehicle_weight"/>
 			          <field name="vehicle_length"/>
-			          <field name="vehicle_Engine"/>         
+			          <field name="vehicle_Engine"/> 
+			          <field name="vehicle_image"
+       								widget="image"
+       								class="oe_kanban_avatar pull-right" 
+       								options="{'size': [110,110]}"/>       
 			        </tree>
 			      </field>
 			</record>
+
+			<record model="ir.ui.view" id="vehicles_view">
+			      <field name="name">Vehicles</field>
+			      <field name="model">vehicles.vehicles</field>
+			      <field name="arch" type="xml">
+			        <form>
+						<sheet>
+							<group>
+									  <field name="vehicle_type"/>
+							          <field name="vehicle_capacity"/>
+							          <field name="vehicle_speed"/>
+							          <field name="vehicle_weight"/>
+							          <field name="vehicle_length"/>
+							          <field name="vehicle_Engine"/> 
+							          <field name="vehicle_image" widget="image"/>    
+							</group>
+						</sheet>    
+			        </form>
+			      </field>
+			</record>
+
+
 
 
 		<record model="ir.actions.act_window" id="transporter_regi_action">
