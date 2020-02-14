@@ -5,6 +5,7 @@
 		      <field name="model">transporter.transporter</field>
 		      <field name="arch" type="xml">
 		        <tree>
+		          <field name="company_id"/>
 		          <field name="name"/>
 		          <field name="email"/>
 		          <field name="contactnumber"/>
@@ -13,6 +14,7 @@
 		          <field name="city"/>
 		          <field name= "pincode"/>
 		          <field name="state"/>
+		          <field name="photo" widget="image"/>
 		        </tree>
 		      </field>
 		  </record>
@@ -22,7 +24,11 @@
 		      <field name="arch" type="xml">
 		        <form>
 		        	<sheet>
+		        	<button name="archive" string="Archive" class="oe_highlight" type="object"/>
+		        	<button name="unarchive" string="UnArchive" class="oe_highlight" type="object"/>
+
 		        		<group>
+		        			  <field name="company_id"/>
 		        			  <field name="name"/>
 					          <field name="email"/>
 					          <field name="contactnumber"/>
@@ -31,13 +37,12 @@
 						      <field name="city"/>
 						      <field name= "pincode"/>
 						      <field name="state"/>
+						      <field name="photo" widget="image"/>
 							</group>
 		        	</sheet>
 		        </form>
 		      </field>
 		  </record>
-
-
 
 
 		 <record model="ir.ui.view" id="lts_list_transporter_regi_search_filter"> 
@@ -57,17 +62,21 @@
 			      <field name="name">inquirey</field>
 			      <field name="model">inquirey.inquirey.demo</field>
 			      <field name="arch" type="xml">
-			        <tree>
+			        <tree create="false" edit="false">
+			          <field name="company_id"/>
 			          <field name="source_add"/>
 			          <field name="desti_add"/>
 			          <field name="distance"/>
 			          <field name="duration"/>
 			          <field name= "weight"/>
+			          <field name="driver_id"/>
 			          <field name="vehicle_type"/>
 			          <field name="vehicle_capacity"/>
 			          <field name="vehicle_speed"/>
-			          <field name="from_date"/>
-			          <field name="to_date"/>      
+			          <field name="vehicle_weight"/>
+			          <field name="date"/>
+			          <field name="order_status"/>
+			               
 			        </tree>
 			      </field>
 			    </record>
@@ -76,66 +85,127 @@
 			      <field name="name">inquirey</field>
 			      <field name="model">inquirey.inquirey.demo</field>
 			      <field name="arch" type="xml">
-			        <form>
-			        	<sheet>
+			        <form create="false" edit="false">
+			        <sheet>
+			        	<div class="oe_button_box" style="padding: 2mm;">
+			        		<button type="object" name="order">Order Confirm</button>
+			        		<button type="object" name="ordercancel">Order Cancel</button>
+			        	</div>
+
 			        		<group>
+			        			  <field name="company_id"/>
 						          <field name="source_add"/>
 						          <field name="desti_add"/>
 						          <field name="distance"/>
 						          <field name="duration"/>
 						          <field name= "weight"/>
-						          <field name="from_date"/>
-						          <field name="to_date"/>
+						          <field name="date"/>
+						          <field name="order_status"/>
 						    </group>
 						    <group>
 						    		<notebook>
 						    			<page string="Vehicl_Details">
 						    				<group>
+						    				  <field name="driver_id"/>
 						    				  <field name="vehicle_type"/>
 									          <field name="vehicle_capacity"/>
 									          <field name="vehicle_speed"/>
+									          <field name="vehicle_weight"/>
 									        </group>
 						    			</page>
 						    		</notebook>
 						    </group>
-						</sheet>      
+					</sheet>      
 			        </form>
 			      </field>
 			    </record>
+
+
+
+			    <record model="ir.ui.view" id="order_form_view">
+			      <field name="name">order</field>
+			      <field name="model">order.order</field>
+			      <field name="arch" type="xml">
+			        <form create="false" edit="false">
+			        <header>
+			        	<button name="button_onprogress" states="done" string="OnProgress" class="oe_highlight" type="object"/>
+						<button name="button_done" string="Done" states="onprogress" class="oe_highlight" type="object"/>
+  						 <field name="state" widget="statusbar" statusbar_visible="onprogess,done"/>
+					</header>
+			        <sheet>
+			        		<group>
+			        			  <field name="inquiryid" invisible="1"/>
+						          <field name="source_add"/>
+						          <field name="desti_add"/>
+						          <field name="distance"/>
+						          <field name="duration"/>
+						          <field name= "weight"/>
+						          <field name="driver_id"/>
+			    				  <field name="vehicle_type"/>
+						          <field name="vehicle_capacity"/>
+						          <field name="vehicle_speed"/>
+						          <field name="vehicle_weight"/>
+						          <field name="date"/>
+						    </group>
+					</sheet>      
+			        </form>
+			      </field>
+			    </record>
+
+			   <record model="ir.ui.view" id="order_tree_view">
+			      <field name="name">Order</field>
+			      <field name="model">order.order</field>
+			      <field name="arch" type="xml">
+			        <tree create="false">
+			        <field name="inquiryid" invisible="1"/>
+			          <field name="source_add"/>
+			          <field name="desti_add"/>
+			          <field name="distance"/>
+			          <field name="duration"/>
+			          <field name= "weight"/>
+			          <field name="driver_id"/>
+    				  <field name="vehicle_type"/>
+			          <field name="vehicle_capacity"/>
+			          <field name="vehicle_speed"/>
+			          <field name="vehicle_weight"/>
+			          <field name="date"/>
+			               
+			        </tree>
+			      </field>
+			    </record>
+
 
 
 			        <record model="ir.ui.view" id="inquirey_cal">
 				      <field name="name">inquirey2</field>
 				      <field name="model">inquirey.inquirey.demo</field>
 				      <field name="arch" type="xml">
-				        <calendar string="Service Request" date_start="from_date" date_stop="to_date">
+				        <calendar string="Service Request" date_start="date">
 				           <field name="vehicle_type"/>
 				       </calendar>
 				      </field>
 				    </record>
 
 
-				   	<record id="inquery_graph_view" model="ir.ui.view">
-            			<field name="name">Inquirey.graph</field>
-            			<field name="model">inquirey.inquirey.demo</field>
+				   	<record id="vehicle_graph_view" model="ir.ui.view">
+            			<field name="name">vehicle.graph</field>
+            			<field name="model">vehicles.vehicles</field>
             			<field name="arch" type="xml">
-                			<graph string="Inquery Graph">
-                    			<field name="vehicle_speed"/>
-                    			<field name="vehicle_capacity"/>
+                			<graph string="Vehicle Graph" >
+                    			<field name="vehicle_capacity" type="measure"/>
+                    			<field name="vehicle_type"/>
                 			</graph>
             			</field>
         			</record>
 
 
-				    <record model="ir.ui.view" id="inquirey_pivot">
-				      <field name="name">inquirey1</field>
-				      <field name="model">inquirey.inquirey.demo</field>
+				    <record model="ir.ui.view" id="vehicle_pivot">
+				      <field name="name">vehicles</field>
+				      <field name="model">vehicles.vehicles</field>
 				      <field name="arch" type="xml">
-				      		<pivot string="inquirey">
-				      				<field name="from_date" type="row"/>
-				      				<field name="to_date" type="row"/>
-				      				<field name="from_date" type="col"/>
-				      				<field name="to_date" type="col"/>
+				      		<pivot string="Vehicle">
+				      				<field name="vehicle_weight" type="row"/>
+				      				<field name="vehicle_type" type="col"/>
 				      		</pivot>
 				      </field>
 				    </record>
@@ -144,12 +214,12 @@
 
 					 <record id='dashboard_view' model='ir.ui.view'>
 					            <field name='name'>dashboard.view</field>
-					            <field name='model'>inquirey.inquirey.demo</field>
+					            <field name='model'>vehicles.vehicles</field>
 					            <field name="mode">primary</field>
 					            <field name='arch' type='xml'>
 					                <dashboard>
-					                	<view type="graph" ref="lts.inquery_graph_view"/>
-					                    <view type="pivot" ref="lts.inquirey_pivot"/>
+					                	<view type="graph" ref="lts.vehicle_graph_view"/>
+					                    <view type="pivot" ref="lts.vehicle_pivot"/>
 					                </dashboard>
 					            </field>
 					    </record>
@@ -162,21 +232,57 @@
                     <templates>
                         <t t-name="kanban-box">
                             <div t-attf-class="oe_kanban_global_click">
+                            	<div class="form-group">
                             		<field name="photo"
        								widget="image"
        								class="oe_kanban_avatar pull-right" 
-       								options="{'size': [110,110]}"/><br/>
-				                    <strong>Name--</strong><field name="name"/><br/>
-				                    <strong>ContactNumber--</strong><field name="contactnumber"/><br/>
-					        		<strong>Email--</strong><field name="email"/><br/>
-				                    <strong>Address--</strong><field name="address"/><br/>
-				                    <strong>Date_Of_Birth--</strong><field name="Date_Of_Birth"/><br/>
-				                    <strong>Licence--</strong><field name="Licence"/><br/>
-				                    <strong>Licence_Number--</strong><field name="Licence_Number"/><br/>
-				                    <strong>Valid-till--</strong><field name="Valid_Date"/><br/>
-				                    <strong>City--</strong><field name="city"/><br/>
-				                    <strong>Pincode--</strong><field name="pincode"/><br/>
-							       	<strong>State--</strong><field name="state"/><br/>
+       								options="{'size': [110,110]}"/>
+       							</div>
+       							<div class="form-group">
+       								<strong>Name</strong>
+				                    <field name="name" class="form-control"/>
+				                </div>
+				                <div class="form-group">
+				                   <strong> ContactNumber</strong>
+				                    <field name="contactnumber"/>
+				                </div>
+				                <div class="form-group">
+					        	<strong>Email</strong>
+					        		<field name="email" class="form-control"/>
+					        	</div>
+					        	<div class="form-group">
+				                    <strong>Address--</strong>
+				                    <field name="address" class="form-control"/>
+				                </div>
+				                <div class="form-group">
+				                    <strong>Date_Of_Birth</strong>
+				                    <field name="Date_Of_Birth" class="form-control"/>
+				                </div>
+				                <div class="form-group">
+				                    <strong>Licence_Availability</strong>
+				                    <field name="Licence" class="form-control"/>
+				                </div>
+				                <div class="form-group">
+				                    <strong>Licence_Number</strong>
+				                    <field name="Licence_Number" class="form-control"/>
+				                </div>
+				                <div class="form-group">
+				                    <strong>Valid-till</strong>
+				                    <field name="Valid_Date" class="form-control"/>
+				                </div>
+				                <div class="form-group">
+				                   <strong>City</strong>
+				                    <field name="city" class="form-control"/>
+				                </div>
+				                <div class="form-group">
+				                    <strong>Pincode</strong>
+				                    <field name="pincode" class="form-control"/>
+				                </div>
+				                <div class="form-group">
+
+							       	<strong>State</strong>
+							       	<field name="state" class="form-control"/>
+							    </div>
 			      
                                 </div>
                         </t>
@@ -192,7 +298,7 @@
 			        <form>
 			          <sheet>
 			          	<group>
-				          	
+				          		  <field name="company_id"/>
 				          		  <field name="name"/>
 						          <field name="contactnumber"/>
 						          <field name="email"/>
@@ -219,6 +325,31 @@
 			        </form>
 			      </field>
 			    </record>
+			   <record model="ir.ui.view" id="driver_tree_view">
+			      <field name="name">Drivers</field>
+			      <field name="model">drivers.drivers</field>
+			      <field name="arch" type="xml">
+			      	<tree>
+				          		  <field name="company_id"/>	
+				          		  <field name="name"/>
+						          <field name="contactnumber"/>
+						          <field name="email"/>
+						          <field name="address"/>
+						          <field name="Date_Of_Birth"/>
+						          <field name="city"/>
+						          <field name="pincode"/>
+						          <field name="state"/>
+						          <field name= "Licence"/>
+								  			<field name="Licence_Number" attrs="{'invisible' : [('Licence','!=', 'yes')]}"/>
+								  			<field name="Valid_Date" attrs="{'invisible' : [('Licence','!=', 'yes')]}"/>
+						          <field name="photo" widget="image"/>
+
+											
+					</tree>
+
+			      </field>
+			    </record>
+
 
 
 
@@ -227,6 +358,7 @@
 			      <field name="model">vehicles.vehicles</field>
 			      <field name="arch" type="xml">
 			        <tree>
+			          <field name="company_id"/>
 			          <field name="vehicle_type"/>
 			          <field name="vehicle_capacity"/>
 			          <field name="vehicle_speed"/>
@@ -248,6 +380,7 @@
 			        <form>
 						<sheet>
 							<group>
+									 <field name="company_id"/>
 									  <field name="vehicle_type"/>
 							          <field name="vehicle_capacity"/>
 							          <field name="vehicle_speed"/>
@@ -278,7 +411,7 @@
 
 		<record model="ir.actions.act_window" id="inquirey_action_dashboard">
 				<field name="name">Inquirey</field>
-				<field name="res_model">inquirey.inquirey.demo</field>
+				<field name="res_model">vehicles.vehicles</field>
 				<field name="view_mode">dashboard</field>
 		</record>
 
@@ -294,6 +427,12 @@
 				    <field name="view_mode">tree,form</field>
 		</record>
 
+		<record model="ir.actions.act_window" id="order_action">
+				    <field name="name">Order</field>
+				    <field name="res_model">order.order</field>
+				    <field name="view_mode">tree,form</field>
+		</record>
+
 
 
 
@@ -303,15 +442,21 @@
 	        <menuitem name="Transporter" id="lts_menu_1_tranporter_regi" parent = "lts_menu_root1" action="transporter_regi_action"/>
 
 	        <menuitem name="Configration"  id="lts_configration" parent="lts_menu_root1" />
-
-	        <menuitem name="Inquirey" id="lts_menu_1_inquirey" parent = "lts_menu_root1" action="inquirey_action"/>
-
-			<menuitem name="Reporting"  id="lts_reporting" parent="lts_menu_root1" action="inquirey_action_dashboard" groups="lts.group_manager"/>	
-
-
+	        
 			<menuitem name="Drivers" id="t_driver_id" parent="lts_configration" action="driver_action" />
 
 			<menuitem name="vehicles" id="T_vehicle_id" parent="lts_configration" action="vehicles_action" />
+
+			<menuitem name="Orders" id="order_id" parent="lts_menu_root1" action="order_action" />
+
+
+
+	        <menuitem name="Inquirey" id="lts_menu_1_inquirey" parent = "lts_menu_root1" action="inquirey_action"/>
+
+			
+
+			<menuitem name="Reporting"  id="lts_reporting" parent="lts_menu_root1" action="inquirey_action_dashboard" groups="lts.group_transporter"/>	
+
 
 
 

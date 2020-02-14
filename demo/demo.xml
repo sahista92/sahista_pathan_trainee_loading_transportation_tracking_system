@@ -1,7 +1,153 @@
 <odoo>
     <data>
 
-          <record id="object0" model="transporter.transporter">
+        <record id="partner001" model="res.partner">
+            <field name="name">Apple_Express</field>
+            <field name="email">appleexpress@gmail.com</field>
+        </record>
+
+        <record id="company001" model="res.company">
+            <field name="name">Apple Express</field>
+            <field name="partner_id" ref="lts.partner001"></field>
+        </record>
+
+        <record id="user001" model="res.users">
+            <field name="partner_id" ref="lts.partner001"></field>
+            <field name="login">Apple_Express</field>
+            <field name="password">123</field>
+            <field name="company_id" ref="lts.company001"></field>
+            <field name="company_ids" eval="[(4, ref('lts.company001'))]" />
+            <field name="groups_id" eval="[(6,0 , [ref('lts.group_transporter')])]" />
+        </record>
+
+
+
+        <record id="partner01" model="res.partner">
+            <field name="name">jasmin</field>
+            <field name="email">jasmin@gmail.com</field>
+        </record>
+        <record id="user01" model="res.users">
+            <field name="partner_id" ref="lts.partner01"></field>
+            <field name="login">jasmin</field>
+            <field name="password">123</field>
+            <field name="groups_id" eval="[(6,0 ,[ref('base.group_portal')])]" />
+        </record>
+
+
+         <record id="object1" model="transporter.transporter">
+            <field name="company_id" ref="lts.company001"></field>
+            <field name="name">Mahendra</field>
+            <field name="email">mah@gmail.com</field>
+            <field name="contactnumber">992514</field>
+            <field name="gender">male</field>
+            <field name="address">Commercial Road Fratton PORTSMOUTH Hampshire</field>
+            <field name="city">Kadi</field>
+            <field name="pincode">321232</field>
+            <field name="state">Gujarat</field>
+            <field name="photo" type="base64" file="lts/static/description/trans2.jpeg"/>
+          </record>
+
+
+
+        <record id="object2" model="vehicles.vehicles">
+        <field name="company_id" ref="lts.company001"></field>
+            <field name="vehicle_type">3</field>
+            <field name="vehicle_capacity">300</field>
+            <field name="vehicle_speed">110</field>
+            <field name="vehicle_weight">150</field>
+            <field name="vehicle_length">500</field>
+            <field name="vehicle_Engine">Detroit Series 60</field>
+             <field name="vehicle_image" type="base64" file="lts/static/description/t1.png"/>
+          </record>
+
+
+          <record id="object3" model="vehicles.vehicles">
+        <field name="company_id" ref="lts.company001"></field>
+            <field name="vehicle_type">4</field>
+            <field name="vehicle_capacity">400</field>
+            <field name="vehicle_speed">90</field>
+            <field name="vehicle_weight">200</field>
+            <field name="vehicle_length">450</field>
+            <field name="vehicle_Engine">Cummins</field>
+             <field name="vehicle_image" type="base64" file="lts/static/description/t3.png"/>
+          </record>
+
+
+        <record id="object4" model="drivers.drivers">
+            <field name="company_id" ref="lts.company001"></field>
+            <field name="name">Ramesh</field>
+            <field name="contactnumber">98989</field>
+            <field name="email">ramesh@gmail.com</field>
+            <field name="address">14,karannagar society,kadi</field>
+            <field name="Date_Of_Birth">1987-6-8</field>
+            <field name="Licence">yes</field>
+            <field name="Licence_Number">63hgk748lkj</field>
+            <field name="Valid_Date">2021-2-11</field>
+            <field name="city">Ahemdabad </field>
+            <field name="pincode">714525</field>
+            <field name="state">Gujarat</field>
+            <field name="photo" type="base64" file="lts/static/description/logo5.png"/>
+          </record>
+
+
+           <record id="object5" model="drivers.drivers">
+            <field name="company_id" ref="lts.company001"></field>
+            <field name="name">Haresh</field>
+            <field name="contactnumber">85967496</field>
+            <field name="email">haresh@gmail.com</field>
+            <field name="address">Manjumnagar,block-no15263</field>
+            <field name="Date_Of_Birth">1981-9-2</field>
+            <field name="Licence">yes</field>
+            <field name="Licence_Number">63hgk748lkj</field>
+            <field name="Valid_Date">2022-6-21</field>
+            <field name="city">Mahesana </field>
+            <field name="pincode">714525</field>
+            <field name="state">Gujarat</field>
+            <field name="photo" type="base64" file="lts/static/description/logo6.png"/>
+          </record>
+
+
+
+        <record id="object6" model="inquirey.inquirey.demo">
+            <field name="company_id" ref="lts.company001"></field>
+            <field name="source_add">Gujarat</field>
+            <field name="desti_add">Pune</field>
+            <field name="distance">150</field>
+            <field name="duration">2</field>
+            <field name="weight">750</field>
+            <field name="driver_id" ref="lts.object4"></field>
+            <field name="vehicle_type" ref="lts.object2"></field>
+            <field name="vehicle_capacity" ref="lts.object2"></field>
+            <field name="vehicle_speed" ref="lts.object2"></field>
+            <field name="vehicle_weight" ref="lts.object2"></field>
+            <field name="date">2020-3-15</field>
+            <field name="create_uid" ref="lts.user01"></field>
+          </record>
+
+
+        <record id="object7" model="inquirey.inquirey.demo">
+            <field name="company_id" ref="lts.company001"></field>
+            <field name="source_add">Punjab</field>
+            <field name="desti_add">Mumbai</field>
+            <field name="distance">600</field>
+            <field name="duration">6</field>
+            <field name="weight">680</field>
+            <field name="driver_id" ref="lts.object5"></field>
+            <field name="vehicle_type" ref="lts.object3"></field>
+            <field name="vehicle_capacity" ref="lts.object3"></field>
+            <field name="vehicle_speed" ref="lts.object3"></field>
+            <field name="vehicle_weight" ref="lts.object3"></field>
+            <field name="date">2020-3-15</field>
+            <field name="create_uid" ref="lts.user01"></field>
+          </record>
+
+
+        
+
+
+
+
+<!--           <record id="object0" model="transporter.transporter">
             <field name="name">Mahendra</field>
             <field name="email">mah@gmail.com</field>
             <field name="contactnumber">992514</field>
@@ -12,7 +158,7 @@
             <field name="state">Gujarat</field>
           </record>
 
-          <record id="object1" model="transporter.transporter">
+          <record id="object56" model="transporter.transporter">
             <field name="name">Surendra</field>
             <field name="email">sur@gmail.com</field>
             <field name="contactnumber">99361</field>
@@ -49,9 +195,9 @@
 
           <record id="object7" model="vehicles.vehicles">
             <field name="vehicle_type">3</field>
-            <field name="vehicle_capacity">600</field>
-            <field name="vehicle_speed">75</field>
-            <field name="vehicle_weight">3.4</field>
+            <field name="vehicle_capacity">300</field>
+            <field name="vehicle_speed">110</field>
+            <field name="vehicle_weight">150</field>
             <field name="vehicle_length">500</field>
             <field name="vehicle_Engine">Detroit Series 60</field>
              <field name="vehicle_image" type="base64" file="lts/static/description/t1.png"/>
@@ -60,8 +206,8 @@
           <record id="object8" model="vehicles.vehicles">
             <field name="vehicle_type">6</field>
             <field name="vehicle_capacity">1000</field>
-            <field name="vehicle_speed">70</field>
-            <field name="vehicle_weight">8.3</field>
+            <field name="vehicle_speed">60</field>
+            <field name="vehicle_weight">800</field>
             <field name="vehicle_length">800</field>
             <field name="vehicle_Engine">Cummins</field>
             <field name="vehicle_image" type="base64" file="lts/static/description/t4.png"/>
@@ -71,8 +217,8 @@
           <record id="object11" model="vehicles.vehicles">
             <field name="vehicle_type">4</field>
             <field name="vehicle_capacity">850</field>
-            <field name="vehicle_speed">80</field>
-            <field name="vehicle_weight">6</field>
+            <field name="vehicle_speed">90</field>
+            <field name="vehicle_weight">500</field>
             <field name="vehicle_length">450</field>
             <field name="vehicle_Engine">CAT Diesel</field>
             <field name="vehicle_image" type="base64" file="lts/static/description/t3.png"/>
@@ -82,7 +228,7 @@
             <field name="vehicle_type">6</field>
             <field name="vehicle_capacity">1000</field>
             <field name="vehicle_speed">70</field>
-            <field name="vehicle_weight">8</field>
+            <field name="vehicle_weight">60</field>
             <field name="vehicle_length">800</field>
             <field name="vehicle_Engine">Volvo</field>
             <field name="vehicle_image" type="base64" file="lts/static/description/t5.png"/>
@@ -97,31 +243,28 @@
             <field name="duration">2.14</field>
             <field name="weight">750</field>
             <field name="vehicle_type" ref="lts.object7"></field>
-            <field name="from_date">2020-2-15</field>
-            <field name="to_date">2020-3-30</field>
+            <field name="date">2020-3-15</field>
           </record>
 
 
           <record id="object14" model="inquirey.inquirey.demo">
-            <field name="source_add">Gujarat</field>
-            <field name="desti_add">Pune</field>
-            <field name="distance">150</field>
-            <field name="duration">2.14</field>
-            <field name="weight">750</field>
+            <field name="source_add">Punjab</field>
+            <field name="desti_add">Mumbai</field>
+            <field name="distance">350</field>
+            <field name="duration">1.42</field>
+            <field name="weight">450</field>
             <field name="vehicle_type" ref="lts.object11"></field>
-            <field name="from_date">2020-2-15</field>
-            <field name="to_date">2020-3-30</field>
+            <field name="date">2020-2-15</field>
           </record>
 
           <record id="object15" model="inquirey.inquirey.demo">
-            <field name="source_add">Gujarat</field>
-            <field name="desti_add">Pune</field>
-            <field name="distance">150</field>
+            <field name="source_add">Ahemdabad</field>
+            <field name="desti_add">Viramgam</field>
+            <field name="distance">100</field>
             <field name="duration">2.14</field>
             <field name="weight">750</field>
             <field name="vehicle_type" ref="lts.object12"></field>
-            <field name="from_date">2020-2-15</field>
-            <field name="to_date">2020-3-30</field>
+            <field name="date">2020-1-15</field>
           </record>
 
 
@@ -141,7 +284,7 @@
             <field name="city">Ahemdabad </field>
             <field name="pincode">714525</field>
             <field name="state">Gujarat</field>
-            <field name="photo" type="base64" file="lts/static/description/9.png"/>
+            <field name="photo" type="base64" file="lts/static/description/logo5.png"/>
           </record>
 
           <record id="object6" model="drivers.drivers">
@@ -188,8 +331,8 @@
             <field name="city">Kashipur </field>
             <field name="pincode">365214</field>
             <field name="state">Uttrakhand</field>
-            <field name="photo" type="base64" file="lts/static/description/12.jpeg"/>
-          </record>
+            <field name="photo" type="base64" file="lts/static/description/t7.png"/>
+          </record> -->
 
 
 

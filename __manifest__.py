@@ -2,20 +2,20 @@
     'name': "LTS",
 
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+        Loading Transportation System """,
 
-    'version': '0.1',
+    'version': '1.0',
 
 
-    'depends': ['web_dashboard'],
+    'depends': ['base', 'web_dashboard', 'portal'],
 
 
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
-        'views/transporter.xml',
+        'views/LTS.xml',
         'views/reports.xml',
+        'views/template.xml'
 
     ],
     'demo': [
